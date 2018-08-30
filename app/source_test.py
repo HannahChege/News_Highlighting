@@ -9,4 +9,8 @@ class SourceTest(unittest.TestCase):
         '''
         Set up method that will run before every Test
         '''
-        self.new_source = Source()
+        self.new_source = Source('fortune','"Fortune"')
+    def test_instance(self):
+        self.assertTrue(isinstance(self.new_source,Source))  
+if __name__ == '__main__':
+    unittest.main()
