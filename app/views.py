@@ -5,4 +5,7 @@ from app  import app
 @app.route('/')
 def index():
     '''
-    View root
+    View root page function that return the index page and its data
+    '''
+    return render_template('index.html')
+    
