@@ -1,6 +1,6 @@
-{% macro displayArticles(headlines_articles) %}
+{% macro displayArticles(source_list) %}
 
-    {% for article in headlines_articles %}
+    {% for article in source_list %}
         <li>{{ article.name }}</li>
     {% endfor %}
 
