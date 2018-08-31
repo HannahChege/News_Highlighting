@@ -1,9 +1,10 @@
 from flask import Flask
-from flask_bootsrap import Bootstrap
+from flask_bootstrap import Bootstrap
 from .config import DevConfig
 
+
 #Initializing application
-app = Flask(__name__,instance_relative_config = True)
+app = Flask(__name__,instance_relative_config=True)
 
 
 #Setting up configuration

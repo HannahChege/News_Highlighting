@@ -10,20 +10,20 @@ api_key = app.config['SOURCE_API_KEY']
 #Getting the source base url
 base_url = app.config['SOURCE_API_BASE_URL']
 
-def get_source(category):
+def get_source(source):
     '''
     Function thar gets the json response to our url request
     '''
-    get_source_url = base_url.format(category,api_key)
-    with urllib.request.urlopen(get_source_url) as url:
-        get_source_data =url.read()
-        get_source_response = json.loads(get_source_data)
+    get_sources_url = base_url.format(source,api_key)
+    with urllib.request.urlopen(get_sources_url) as url:
+        get_sources_data =url.read()
+        get_sources_response = json.loads(get_sources_data)
 
         source_articles = None
 
-        if get_source_response['articles']:
-            source_articles_list = get_source_response['articles']
-            source_articles = proces_articles(source_articles_list)
+        if get_sources_response['articles']:
+            sources_articles_list = get_sources_response['articles']
+            source_articles = process_articles(sources_articles_list)
 
 
     return source_articles
