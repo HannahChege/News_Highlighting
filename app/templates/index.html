@@ -1,7 +1,7 @@
 {% extends 'base.html'%}
 {% import 'macros.html' as macro%}
-<!-- <!DOCTYPE html> -->
-<!-- <html>
+<!DOCTYPE html>
+<html>
     <head>
         <meta charset="utf-8">
         {% if title %}
@@ -10,14 +10,13 @@
         <title> Welcome to NEWS HIGHLIGHTING </title>
         {% endif %}
     </head>
-    <body> -->
+    <body>
  <!-- article source section  -->
  {% block content%}
  <h3> Top Headlines</h3>
  <div class="article-columns">
-        {{ macro.displayArticles(headlines)}}
-   
-    </div>
+        {{ macro.displayArticles(headlines_articles)}}
+</div>
 {%endblock%}
-    <!-- </body>
-</html> -->
+    </body>
+</html>
