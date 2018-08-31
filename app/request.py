@@ -77,9 +77,13 @@ def process_articles1(article1_list):
     '''
     article1_articles = []
     for article1_item in article1_list:
-        id = article1_item.get('id')
-        name = article1_item.get('name')
-        category = article1_item.get('category')
-        article1_object = Article(id,name,category)
+        author = article1_item.get('author')
+        title = article1_item.get('title')
+        description = article1_item.get('description')
+        url = article1_item.get('url')
+        image = article1_item.get('urlToImage')
+        time = article1_item.get('publishedAt')
+
+        article1_object = Article(author,title,description,url,image,time)
         article1_articles1.append(article1_object)
     return article1_articles1    
