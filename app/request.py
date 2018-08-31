@@ -1,27 +1,27 @@
 from app import app
 import urllib.request,json
-from .models import source
+from .models import Article, Source
 Source = source.Source
 
 
 #Getting api key
-api_key = app.config['SOURCE_API_KEY']
+api_key = app.config['NEWS_API_KEY']
 
 #Getting the source base url
-base_url = app.config['SOURCE_API_BASE_URL']
+base_url = app.config['NEWS_API_BASE_URL']
 
-def get_source(source):
+def get_articles(endpoint,category,sources):
     '''
     Function thar gets the json response to our url request
     '''
-    get_sources_url = base_url.format(source,api_key)
-    with urllib.request.urlopen(get_sources_url) as url:
-        get_sources_data =url.read()
-        get_sources_response = json.loads(get_sources_data)
+    get_articles_url = base_url.format(endpoint,category,source,api_key)
+    with urllib.request.urlopen(get_articles_url) as url:
+        get_articles_data =url.read()
+        get_articles_response = json.loads(get_articles_data)
 
-        source_articles = None
+        articles_results = None
 
-        if get_sources_response['articles']:
+        if get_articles_response['articles']:
             sources_articles_list = get_sources_response['articles']
             source_articles = process_articles(sources_articles_list)
 
