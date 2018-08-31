@@ -47,3 +47,39 @@ def process_articles(source_list):
         source_object = Article(id,name,category)
         source_articles.append(source_object)
     return source_articles
+
+def get_article1(id):
+      '''
+    Function that gets the json response to our url request
+    '''
+    get_articles1_url = https://newsapi.org/v2/top-headlines?sources={}&apiKey={}.format(id,api_key)
+    
+    with urllib.request.urlopen(get_articles1_url) as url:
+        get_articles1_data = url.read()
+        get_articles1_response = json.loads(get_articles1_data)
+
+        article1_results = None
+
+        if get_articles1_response['articles']:
+            article1_results_list = get_articles1_response['articles']
+            article1_results = process_articles1(article1_results_list)
+
+
+    return article1_results   
+def process_articles1(article1_list):
+    '''
+    Function that processes the article1 articles and transforn them to a list of Object
+
+    Args:
+   article1_list: A list of dictionaries that contain sarticle1 details
+    Returns :
+    article1_articles: A list of article1 objects\
+    '''
+    article1_articles = []
+    for article1_item in article1_list:
+        id = article1_item.get('id')
+        name = article1_item.get('name')
+        category = article1_item.get('category')
+        article1_object = Article(id,name,category)
+        article1_articles1.append(article1_object)
+    return article1_articles1    
