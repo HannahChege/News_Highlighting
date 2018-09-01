@@ -1,1 +1,18 @@
-<h1>Hello Article {{id}}</h1>
+{% extends 'base.html' %} 
+
+{%block content%}
+
+<h3>Top News</h3>
+{% for article_item in article %}
+<div class="row">
+    <div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
+        <img src="{{article_item.image}}" alt="news pic" style="height: 200px; width: 200px;">
+    </div>
+    <div class="col -md-8 col-lg-8 col-xs-8 col-sm-8">
+        <h4>{{article_item.title}}</h4>s
+        <p>{{article_item.description}}</p><br>
+        <a href="{{artiicle_item.url}}"target="_blank">Read More</a>
+        <p>Submiited:<i>{{article_item.time}}</i></p>
+    </div>
+</div>
+{% endfor %}
