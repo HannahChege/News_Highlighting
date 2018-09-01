@@ -30,7 +30,21 @@ def article1(article1_id):
     print(article1)
 
     title = f'{article1_id}'
-    return render_template('index.html', title = title, headlines_general = headlines_general,headlines_sports = headlines_sports,headlines_entertainment = headlines_entertainment,headlines_business = headlines_business,headlines_technology = headlines_technology)
+    return render_template('article.html',id = article ,title = title)
+
+@app.route('/category/<cat_name>')
+def category(cat_name):
+    '''
+    function that returns the category page and its data
+    '''
+
+    # Getting headlines articles
+    category= get_category('cat_name')
+    print(category)
+
+    title = f'{cat_name}'
+    return render_template('category.html',name= category ,title = title)
+
 
 
     
