@@ -16,7 +16,20 @@ def index():
     headlines_technology = get_articles('technology')
    
 
-    title = 'Home - Welcome to The best Movie Review Website Online'
+    title = 'Home - news'
+    return render_template('index.html', title = title, headlines_general = headlines_general,headlines_sports = headlines_sports,headlines_entertainment = headlines_entertainment,headlines_business = headlines_business,headlines_technology = headlines_technology)
+
+@app.route('/article1/<article_id>')
+def article1(article1_id):
+    '''
+    View  page function that returns the article1 page and its data
+    '''
+
+    # Getting headlines articles
+    article1= get_articles1('article1_id')
+    print(article1)
+
+    title = f'{article1_id}'
     return render_template('index.html', title = title, headlines_general = headlines_general,headlines_sports = headlines_sports,headlines_entertainment = headlines_entertainment,headlines_business = headlines_business,headlines_technology = headlines_technology)
 
 
