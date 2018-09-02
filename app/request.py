@@ -43,26 +43,28 @@ def process_articles(source_list):
         id = source_item.get('id')
         name = source_item.get('name')
         category = source_item.get('category')
+        description = source_item.get('description')
+        url = source_item.get('url')
         source_object = Article(id, name, category)
         source_articles.append(source_object)
     return source_articles
 
-def article(id):
-    article_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(id,api_key)
-    print(article_url)
-    with urllib.request.urlopen(article_url) as url:
-        article_data = url.read()
-        article_response = json.loads(article_data)
+def article1(id):
+    article1_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(id,api_key)
+    print(article1_url)
+    with urllib.request.urlopen(article1_url) as url:
+        article1_data = url.read()
+        article1_response = json.loads(article1_data)
 
-        article_results = None
+        article1_results = None
 
-        if article_response['articles']:
-            article_article_list = article_response['articles']
-            article_results = process_articles_results(article_article_list)
+        if article1_response['articles']:
+            article1_article_list = article1_response['articles']
+            article1_results = process_articles1_results(article1_article_list)
 
 
-    return article_results
-def process_articles(news):
+    return article1_results
+def process_article1(article1_list):
     '''
     Function that processes the article1 articles and transforn them to a list of Object
 
@@ -71,14 +73,14 @@ def process_articles(news):
     Returns :
     article1_articles: A list of article1 objects\
     '''
-    article_results = []
-    for article in news:
-        author = article.get('author')
-        title = article.get('title')
-        description = article.get('description')
-        url = article.get('url')
-        image = article.get('urlToImage')
-        time = article.get('publishedAt')
+    article1_results = []
+    for article1 in article1_list:
+        author = article1.get('author')
+        title = article1.get('title')
+        description = article1.get('description')
+        url = article1.get('url')
+        image = article1.get('urlToImage')
+        time = article1.get('publishedAt')
 
 
         if url:
