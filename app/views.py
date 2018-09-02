@@ -1,6 +1,6 @@
 from flask import render_template
 from app  import app
-from .request import get_articles
+from .request import get_articles,get_article1
 
 @app.route('/')
 def index():
@@ -19,18 +19,18 @@ def index():
     title = 'Home - news'
     return render_template('index.html', title = title, headlines_general = headlines_general,headlines_sports = headlines_sports,headlines_entertainment = headlines_entertainment,headlines_business = headlines_business,headlines_technology = headlines_technology)
 
-@app.route('/article1/<article_id>')
-def article1(article1_id):
+@app.route('/article1/<int:id>')
+def article1(id):
     '''
     View  page function that returns the article1 page and its data
     '''
 
     # Getting headlines articles
-    article1= get_articles1('article1_id')
-    print(article1)
+    article1= get_article1('id')
+    # print(article1)
 
-    title = f'{article1_id}'
-    return render_template('article.html',id = article ,title = title)
+    title = f'{article1.title}'
+    return render_template('article.html',title= title ,article1 = article1)
 
 @app.route('/category/<cat_name>')
 def category(cat_name):

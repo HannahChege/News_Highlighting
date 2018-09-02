@@ -49,21 +49,27 @@ def process_articles(source_list):
         source_articles.append(source_object)
     return source_articles
 
-def article1(id):
-    article1_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(id,api_key)
-    print(article1_url)
-    with urllib.request.urlopen(article1_url) as url:
+def get_article1(id):
+    get_article1_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(id,api_key)
+    # print(article1_url)
+    with urllib.request.urlopen(get_article1_url) as url:
         article1_data = url.read()
         article1_response = json.loads(article1_data)
 
-        article1_results = None
+        article1_object = None
 
-        if article1_response['articles']:
-            article1_article_list = article1_response['articles']
-            article1_results = process_articles1_results(article1_article_list)
+        if article1_response:
+            id = article1_response.get('id')
+            author = article1_response.get('author')
+            title = article1_response.get('title')
+            description = article1_response.get('description')
+            url = article1_response.get('url')
+            image = article1_response.get('urlToImage')
+            time = article1_response.get('publishedAt')
+            article1_object = article1(id,author,title,description,url,image,time)
 
 
-    return article1_results
+    return article1_object
 def process_article1(article1_list):
     '''
     Function that processes the article1 articles and transforn them to a list of Object

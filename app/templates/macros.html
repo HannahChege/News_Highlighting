@@ -10,6 +10,14 @@
 
     {% for article in article_list %}
         <li>{{ article.id }}</li>
+
+   <img src="{{article1.image}}" alt="news pic" style="height: 200px; width: 200px;">
+    class="col -md-8 col-lg-8 col-xs-8 col-sm-8">
+        <h4>{{article1.title}}</h4>s
+        <p>{{article1.description}}</p><br>
+        <a href="{{article1.url}}"target="_blank">Read More</a>
+        <p>Submiited:<i>{{article1.time}}</i></p>
+
     {% endfor %}
 
 {% endmacro %}
