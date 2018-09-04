@@ -1,4 +1,4 @@
-class Article:
+class Source:
     '''
     Article class to define Article Objects
     '''
@@ -7,7 +7,7 @@ class Article:
         self.id = id
         self.name = name
         self.category = category
-class Source:
+class Article:
     '''
    Source class to define Source Objects
     '''

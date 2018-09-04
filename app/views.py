@@ -19,17 +19,16 @@ def index():
     title = 'Home - news'
     return render_template('index.html', title = title, headlines_general = headlines_general,headlines_sports = headlines_sports,headlines_entertainment = headlines_entertainment,headlines_business = headlines_business,headlines_technology = headlines_technology)
 
-@app.route('/articles')
-def article_source():
+@app.route('/articles/<id>')
+def articles(id):
     '''
     View  page function that returns the article1 page and its data
     '''
 
     # Getting headlines articles
-    art= article_source()
-    # print(article1)
+    art= article_source(id)
 
-    # title = f'{article1.title}'
+    # title = f'{article.title}'
     return render_template('article.html',art = art)
 
 

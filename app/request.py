@@ -51,8 +51,8 @@ def process_articles(source_list):
         source_articles.append(source_object)
     return source_articles
 
-def article_source():
-    article_source_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(api_key)
+def article_source(id):
+    article_source_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(id,api_key)
     print(article_source_url)
     with urllib.request.urlopen(article_source_url) as url:
         article_source_data = url.read()
@@ -67,25 +67,23 @@ def article_source():
 
     return article_source_results
 
-def process_articles_results(article1_list):
+def process_articles_results(article_list):
     '''
     function that processes the json files of articles from the api key
     '''
     article_source_results = []
-    while(len(source_results) <= 10):
-        for article in news:
-            source = article.get('source')
-            author = article.get('author')
-            title= article.get('title')
-            description = article.get('description')
-            url = article.get('url')
-            image = article.get(' urlToImage')
-            time = article.get ('publishedAt')
+    for article in article_list:
+        source = article.get('source')
+        author = article.get('author')
+        title= article.get('title')
+        description = article.get('description')
+        url = article.get('url')
+        urlToImage = article.get(' urlToImage')
+        time = article.get ('publishedAt')
         
 
         if url:
-            article_objects = Article(source,author,title,description,url,image,time)
+            article_objects = Article(source,author,title,description,url,urlToImage,time)
             article_source_results.append(article_objects)
-
-    return article_source_results
+        return article_source_results
 
