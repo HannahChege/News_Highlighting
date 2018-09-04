@@ -7,11 +7,11 @@ Article = article.Article
 Source = article.Source
 
 # Getting api key
-api_key = app.config['NEWS_API_KEY']
+api_key = None
 
 # Getting the Article base url
-base_url = app.config['NEWS_API_BASE_URL']
-article_url= app.config['ARTICLE_API_URL']
+base_url = None
+article_url= None
 
 def get_articles(category):
     '''
@@ -47,7 +47,9 @@ def process_articles(source_list):
         category = source_item.get('category')
         description = source_item.get('description')
         url = source_item.get('url')
-        source_object = Article(id, name, category)
+        urlToImage = article.get(' urlToImage')
+        time = article.get('publishedAt')
+        source_object = Article(id, name, category,description,url,urlToImage,publishedAt)
         source_articles.append(source_object)
     return source_articles
 
