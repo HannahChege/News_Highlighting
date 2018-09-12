@@ -19,27 +19,37 @@
 
  {% block content%}
  <h3> TOP HEADLINES</h3>
- <div class="card">
-        <h3>General</h3>
+ <div id="general" class="panel panel-default">
+
+     <h3>General</h3>
         <ul>
     {{ macro.displayArticles(headlines_general)}}
-    <ul>
+    </ul>
+  </div>
+<div id="sport" class="panel panel-default" style="border:6px purple;">
         <h3>sports</h3>
         <ul>
         {{ macro.displayArticles(headlines_sports)}}
-        <ul>
+        </ul>
+</div>
+<div id="enta" class="panel panel-default">
         <h3>entertainment</h3>
         <ul>
         {{ macro.displayArticles(headlines_entertainment)}}
-         <ul>
+         </ul>
+</div>
+<div id="bs" class="panel panel-default">
         <h3>Business</h3>
         <ul>
             {{ macro.displayArticles(headlines_business)}}
-        <ul>
+        </ul>
+</div>
+<div id="tech" class="panel panel-default">
         <h3>technology</h3>
         <ul>
             {{ macro.displayArticles(headlines_technology)}}
-        <ul>
-
+        </ul>
 </div>
+
+
 {%endblock%}

@@ -1,7 +1,7 @@
 from flask import render_template,request,redirect,url_for
-from .import main
-from .request import get_articles
-from ..request import article_source
+from . import main
+from ..request import get_articles
+from ..request import get_article_source
 from ..models import Source,Article
 
 
@@ -19,21 +19,21 @@ def index():
     headlines_business = get_articles('business')
     headlines_technology = get_articles('technology')
 
-
-    title = 'Home - news'
+    
+    title = 'Home - TOP NEWS SOURCES'
     return render_template('index.html', title = title, headlines_general = headlines_general,headlines_sports = headlines_sports,headlines_entertainment = headlines_entertainment,headlines_business = headlines_business,headlines_technology = headlines_technology)
 
-@main.route('/articles/<id>')
-def articles(id):
+@main.route('/articles/<source_id>')
+def articles(source_id):
     '''
     View  page function that returns the article1 page and its data
     '''
 
     # Getting headlines articles
-    art= article_source(id)
+    art = get_article_source(source_id)
 
-    # title = f'{article.title}'
-    return render_template('article.html',art = art)
+     #title = f'{Article.title}'
+    return render_template('article.html',title =title,name = source_id,art = art)
 
 
 

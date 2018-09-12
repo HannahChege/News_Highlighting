@@ -1,6 +1,6 @@
 {% macro displayArticles(source_list) %}
 
-    {% for source in source_list %}
+    {% for article in source_list %}
         <li>{{ source.name }}</li>
     <!--<a href ="/articles/{{article.id}}"><li>{{ article.name}}</li></a>-->
     {% endfor %}
@@ -14,7 +14,7 @@
 
    <img src="{{article.urlToImage}}" alt="news pic" style="height: 200px; width: 200px;">
     class="col -md-8 col-lg-8 col-xs-8 col-sm-8">
-        <h4>{{article.title}}</h4>s
+        <h4>{{article.title}}</h4>
         <p>{{article.description}}</p><br>
         <a href="{{article.url}}"target="_blank">Read More</a>
         <p>Submiited:<i>{{article.time}}</i></p>
