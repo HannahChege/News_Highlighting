@@ -22,19 +22,18 @@ def get_sources():
     '''
     Function that gets the json response to our url request
     '''
-    get_articles_url = base_url.format(, api_key)
-    print(get_articles_url)
-    with urllib.request.urlopen(get_articles_url) as url:
-        get_articles_data = url.read()
-        get_articles_response = json.loads(get_articles_data)
+    source_url = base_url.format( api_key)
+    with urllib.request.urlopen(source_url) as url:
+        source_data = url.read()
+        source_response = json.loads(source_data)
 
-        article_results = None
+        news_results = None
 
-        if get_articles_response['sources']:
-            article_results_list = get_articles_response['sources']
-            article_results = process_sources(article_results_list)
+        if source_response['sources']:
+            source_results_list = source_response['sources']
+            source_results = process_sources(source_results_list)
 
-    return article_results
+    return source_results
 
 
 def process_sources(source_list):
@@ -45,14 +44,13 @@ def process_sources(source_list):
     Returns :
     source_articles: A list of source objects
     '''
-    source_articles = []
+    source_news = []
     for source_item in source_list:
         id = source_item.get('id')
         name = source_item.get('name')
-        category = source_item.get('category')
-        if id:
-            source_object = Source(id,name,category)
-            source_articles.append(source_object)
+        source_object = Source(id,name,category)
+        source_articles.append(source_object) 
+        
     return source_articles
 
 def get_article_source(id):
