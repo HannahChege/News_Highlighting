@@ -1,7 +1,6 @@
 from flask import render_template,request,redirect,url_for
 from . import main
-from ..request import get_articles
-from ..request import get_article_source
+from ..request import get_sources
 from ..models import Source,Article
 
 
@@ -11,29 +10,26 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
-
-    # Getting headlines articles
-    headlines_general = get_articles('general')
-    headlines_sports = get_articles('sports')
-    headlines_entertainment = get_articles('entertainment')
-    headlines_business = get_articles('business')
-    headlines_technology = get_articles('technology')
-
+    sources= get_sources('general')
+    sources= get_sources('sport')
+    sources= get_sources('business')
+    sources= get_sources('entertainment')
+    sources= get_sources('technology')
     
-    title = 'Home - TOP NEWS SOURCES'
-    return render_template('index.html', title = title, headlines_general = headlines_general,headlines_sports = headlines_sports,headlines_entertainment = headlines_entertainment,headlines_business = headlines_business,headlines_technology = headlines_technology)
+    
+   return render_template('index.html', title = title, sources_general = sources_general,sources_sports = sources_sports,sources_entertainment = sources_entertainment,
+   sources_business = sources_business,sources_technology = sources_technology)
+# @main.route('/articles/<source_id>')
+# def articles(source_id):
+#     '''
+#     View  page function that returns the article1 page and its data
+#     '''
 
-@main.route('/articles/<source_id>')
-def articles(source_id):
-    '''
-    View  page function that returns the article1 page and its data
-    '''
+#     # Getting sources articles
+#     art = get__source(source_id)
 
-    # Getting headlines articles
-    art = get_article_source(source_id)
-
-     #title = f'{Article.title}'
-    return render_template('article.html',title =title,name = source_id,art = art)
+#      #title = f'{Article.title}'
+#     return render_template('article.html',title =title,name = source_id,art = art)
 
 
 

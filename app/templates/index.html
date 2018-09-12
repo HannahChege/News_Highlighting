@@ -1,55 +1,16 @@
 {% extends 'base.html'%}
-{% import 'macros.html' as macro%}
-<!-- <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        {% if title %}
-        <title> {{ title }}</title>
-        {% else %}
-        <title> Welcome to NEWS HIGHLIGHTING </title>
-        {% endif %}
-    </head>
-    <body> -->
- <!-- article source section  -->
-<!--styles block-->
 
-    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
 
 
  {% block content%}
- <h3> TOP HEADLINES</h3>
- <div id="general" class="panel panel-default">
+ <ul>
+    {% for source in sources %}
+      <li>{{source.name}}</li>
+ 
 
-     <h3>General</h3>
-        <ul>
-    {{ macro.displayArticles(headlines_general)}}
-    </ul>
-  </div>
-<div id="sport" class="panel panel-default" style="border:6px purple;">
-        <h3>sports</h3>
-        <ul>
-        {{ macro.displayArticles(headlines_sports)}}
-        </ul>
-</div>
-<div id="enta" class="panel panel-default">
-        <h3>entertainment</h3>
-        <ul>
-        {{ macro.displayArticles(headlines_entertainment)}}
-         </ul>
-</div>
-<div id="bs" class="panel panel-default">
-        <h3>Business</h3>
-        <ul>
-            {{ macro.displayArticles(headlines_business)}}
-        </ul>
-</div>
-<div id="tech" class="panel panel-default">
-        <h3>technology</h3>
-        <ul>
-            {{ macro.displayArticles(headlines_technology)}}
-        </ul>
-</div>
+    {% endfor %}
+    
+</ul>
 
 
 {%endblock%}
